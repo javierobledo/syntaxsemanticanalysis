@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
-import sys, urllib.request
+import sys
 import requests, re
 from bs4 import BeautifulSoup
+try:
+    import urllib.request
+except ImportError:
+    import urllib2
 
 
 def printProgress (iteration, total, prefix = '', suffix = '', decimals = 1, barLength = 100, fill = '█'):
