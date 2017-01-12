@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import click
+from syntaxsemanticanalysis import download
 
 
 @click.command()
-def main(args=None):
+@click.option('--dataset',default='ecco-tcp')
+def main(dataset):
     """Console script for syntaxsemanticanalysis"""
-    click.echo("Replace this message by putting your code into "
-               "syntaxsemanticanalysis.cli.main")
-    click.echo("See click documentation at http://click.pocoo.org/")
+    download()
 
 
 if __name__ == "__main__":

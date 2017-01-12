@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import sys
-import requests, re
+import re, requests
 from bs4 import BeautifulSoup
 try:
-    import urllib.request
+    import urllib.request as ul
 except ImportError:
-    import urllib2
+    import urllib as ul
 
 
 def printProgress (iteration, total, prefix = '', suffix = '', decimals = 1, barLength = 100, fill = '█'):
@@ -31,7 +32,7 @@ def printProgress (iteration, total, prefix = '', suffix = '', decimals = 1, bar
 def download(datasetname = "ecco-tcp", dataseturl = "http://www.lib.umich.edu/tcp/docs/texts/ecco/"):
     for url, filename in get_all_data(dataseturl):
         print("Downloading "+filename+":",)
-        urllib.request.urlretrieve(url,filename,reporthook)
+        ul.urlretrieve(url,filename,reporthook)
 
 
 def get_all_data(dataseturl):

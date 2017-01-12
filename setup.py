@@ -33,7 +33,7 @@ setup(
                  'syntaxsemanticanalysis'},
     entry_points={
         'console_scripts': [
-            'syntaxsemanticanalysis=syntaxsemanticanalysis.cli:main'
+            'ssev=syntaxsemanticanalysis.cli:main'
         ]
     },
     include_package_data=True,
