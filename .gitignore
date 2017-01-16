@@ -105,5 +105,8 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-#Virtual Enviroment
+# Virtual Enviroment
 venv
+
+# Temporary Dataset directory
+*/tmp/*

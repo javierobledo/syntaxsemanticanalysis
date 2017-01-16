@@ -11,6 +11,8 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'Click>=6.0',
+    'beautifulsoup4==4.5.3',
+    'lxml'
     # TODO: put package requirements here
 ]
 
@@ -33,7 +35,8 @@ setup(
                  'syntaxsemanticanalysis'},
     entry_points={
         'console_scripts': [
-            'ssev=syntaxsemanticanalysis.cli:main'
+            'ssev=syntaxsemanticanalysis.cli:main',
+            'readXML=syntaxsemanticanalysis.tcp_hdr2csv:cli'
         ]
     },
     include_package_data=True,
