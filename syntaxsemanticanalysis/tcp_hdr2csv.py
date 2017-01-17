@@ -8,6 +8,7 @@ import os
 from os.path import basename
 
 author_dates_pat = re.compile(r", ([-\d]+)\.$")
+author_dates_pat = re.compile(r", (\d*\??-?\d+\.$)")
 filenames = []
 
 out_rows = ["filename", "dlps", "title", "author", "dates",
