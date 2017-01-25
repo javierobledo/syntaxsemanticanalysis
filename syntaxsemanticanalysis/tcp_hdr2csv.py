@@ -7,8 +7,7 @@ import codecs
 import os
 from os.path import basename
 
-author_dates_pat = re.compile(r", ([-\d]+)\.$")
-author_dates_pat = re.compile(r", (\d*\??-?\d+\.$)")
+author_dates_pat = re.compile(r"(\sill.\s)?(\sfl.\s)?(\sca.\s)?(\sd.\s)??\d+\??( or \d+)?(-\d+)?\??[\.,]?")
 filenames = []
 
 out_rows = ["filename", "dlps", "title", "author", "dates",
@@ -40,7 +39,7 @@ def process_file(f, out):
     try:
         a_str = src.TITLESTMT.AUTHOR.string
         row["author"] = author_dates_pat.sub("", a_str)
-        row["dates"] = author_dates_pat.search(a_str).group(1)
+        row["dates"] = author_dates_pat.search(a_str).group(0)
     except AttributeError:
         pass
 
@@ -58,7 +57,6 @@ def process_file(f, out):
         row["pubdate"] = src.PUBLICATIONSTMT.DATE.string
     except AttributeError:
         pass
-
     # unicode-ify
     out.writerow({ k: v.encode('utf8') for k, v in row.items() })
 

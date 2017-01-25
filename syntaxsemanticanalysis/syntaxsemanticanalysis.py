@@ -72,8 +72,9 @@ def download(datasetname = "ecco-tcp", dataseturl = "http://www.lib.umich.edu/tc
     if not os.path.exists(os.path.join(directory,dataset)):
         os.makedirs(os.path.join(directory,dataset))
     for url, filename in get_all_data(dataseturl):
-        print("Downloading "+filename+":",)
-        ul.urlretrieve(url,os.path.join(directory,dataset,filename),reporthook)
+        if not os.path.exists(os.path.join(directory,dataset,filename)):
+            print("Downloading "+filename+":",)
+            ul.urlretrieve(url,os.path.join(directory,dataset,filename),reporthook)
 
 
 def get_all_data(dataseturl):
