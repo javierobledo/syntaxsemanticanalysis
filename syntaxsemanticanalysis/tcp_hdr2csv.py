@@ -10,7 +10,7 @@ from os.path import basename
 author_dates_pat = re.compile(r"(\sill.\s)?(\sfl.\s)?(\sca.\s)?(\sd.\s)??\d+\??( or \d+)?(-\d+)?\??[\.,]?")
 filenames = []
 
-out_rows = ["filename", "dlps", "title", "author", "dates",
+out_rows = ["id", "dlps", "title", "author", "dates",
         "pubplace", "pub", "pubdate"]
 
 
@@ -20,7 +20,7 @@ def process_file(f, out):
     row = dict()
     fdesc = doc.find("FILEDESC")
 
-    row["filename"] = basename(f.name)
+    row["id"] = os.path.splitext(basename(f.name))[0]
 
     # TODO fails on EEBO, headers are lc and different
     # ECCO entries have IDNO types: TCP, DLPS, ESTC, DocNo
