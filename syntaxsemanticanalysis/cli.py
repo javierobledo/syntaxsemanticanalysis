@@ -15,9 +15,12 @@ except ImportError:
 def main(dataset):
     """Console script for syntaxsemanticanalysis"""
     directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
-    ssa.main(directory,dataset)
-    sshdr.headers_to_csv(directory,dataset)
-    ssxml.corpus_to_csv(directory,dataset)
+    if not ssa.exists_dataset(directory,dataset):
+        ssa.main(directory,dataset)
+        sshdr.headers_to_csv(directory,dataset)
+        ssxml.corpus_to_csv(directory,dataset)
+        ssa.erase_all_files_with_extension(directory,".hdr")
+        ssa.erase_all_files_with_extension(directory,".xml")
 
 if __name__ == "__main__":
     main()

@@ -35,9 +35,7 @@ setup(
                  'syntaxsemanticanalysis'},
     entry_points={
         'console_scripts': [
-            'ssev=syntaxsemanticanalysis.cli:main',
-            'readXML=syntaxsemanticanalysis.tcp_hdr2csv:cli',
-            'readXMLText=syntaxsemanticanalysis.xml2csv:cli'
+            'ssev=syntaxsemanticanalysis.cli:main'
         ]
     },
     include_package_data=True,

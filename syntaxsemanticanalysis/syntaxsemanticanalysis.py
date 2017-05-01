@@ -92,6 +92,22 @@ def reporthook(blocknum, blocksize, totalsize):
         percent = read * 100 // totalsize
         printProgress(percent, 100,prefix='Progress:',suffix='Complete', barLength=50)
 
+def exists_dataset(directory, dataset):
+    dir = os.path.join(directory,dataset)
+    headfilename = os.path.join(dir,dataset+"_header.csv")
+    corpusfilename = os.path.join(dir,dataset+"_corpus.csv")
+    if os.path.exists(dir):
+        if os.path.exists(headfilename) and os.path.exists(corpusfilename):
+            return True
+    return False
+
+def erase_all_files_with_extension(directory,extension):
+    filesnames = os.listdir(directory)
+
+    for file in filesnames:
+        if file.endswith(extension):
+            os.remove(os.path.join(directory, file))
+
 
 def main(directory,dataset):
     download(directory,dataset)
