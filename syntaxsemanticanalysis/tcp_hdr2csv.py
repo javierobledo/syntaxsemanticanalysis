@@ -60,27 +60,31 @@ def process_file(f, out):
     # unicode-ify
     out.writerow({ k: v.encode('utf8') for k, v in row.items() })
 
-def cli():
-    import sys
+def header_filenames(directory):
+    l = []
+    for file in os.listdir(directory):
+        if file.endswith(".hdr"):
+            l.append(os.path.join(directory,file))
+    return l
 
-    out = csv.DictWriter(sys.stdout, out_rows, quoting=csv.QUOTE_ALL)
-
-    if sys.argv[1] == "-h":
+def headers_to_csv(dir,dataset):
+    headername = dataset+"_header.csv"
+    datasetdir = os.path.join(dir,dataset)
+    with open(os.path.join(datasetdir,headername), 'w') as csvfile:
+        out = csv.DictWriter(csvfile, out_rows, quoting=csv.QUOTE_ALL)
+        filenames = header_filenames(datasetdir)
         out.writeheader()
-        filenames = sys.argv[2:]
-    else:
-        filenames = sys.argv[1:]
 
-    def proc(fn):
-        with codecs.open(fn, "r", encoding="utf-8") as f:
-            process_file(f, out)
+        def proc(fn):
+            with codecs.open(fn, "r", encoding="utf-8") as f:
+                process_file(f, out)
 
-    for fn in filenames:
-        if os.path.isdir(fn):
-            for f in os.listdir(fn):
-                proc(os.path.join(fn, f))
-        else:
-            proc(fn)
+        for fn in filenames:
+            if os.path.isdir(fn):
+                for f in os.listdir(fn):
+                    proc(os.path.join(fn, f))
+            else:
+                proc(fn)
 
 if __name__ == "__main__":
     import sys

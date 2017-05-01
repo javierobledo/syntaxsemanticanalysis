@@ -11,8 +11,8 @@ except ImportError:
     import urllib as ul
 
 
-directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
-dataset = "ecco-tcp"
+#directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
+#dataset = "ecco-tcp"
 
 
 def unzip_ecco_tcp_xmls(origin_directory, destination_directory):
@@ -68,7 +68,7 @@ def printProgress (iteration, total, prefix = '', suffix = '', decimals = 1, bar
         sys.stdout.write('\n')
     sys.stdout.flush()
 
-def download(datasetname = "ecco-tcp", dataseturl = "http://www.lib.umich.edu/tcp/docs/texts/ecco/"):
+def download(directory, dataset, dataseturl = "http://www.lib.umich.edu/tcp/docs/texts/ecco/"):
     if not os.path.exists(os.path.join(directory,dataset)):
         os.makedirs(os.path.join(directory,dataset))
     for url, filename in get_all_data(dataseturl):
@@ -93,8 +93,8 @@ def reporthook(blocknum, blocksize, totalsize):
         printProgress(percent, 100,prefix='Progress:',suffix='Complete', barLength=50)
 
 
-def main():
-    download()
+def main(directory,dataset):
+    download(directory,dataset)
     unzip_ecco_tcp_xmls(os.path.join(directory,dataset),os.path.join(directory,dataset+"_unzipped"))
     shutil.rmtree(os.path.join(directory,dataset))
     shutil.move(os.path.join(directory,dataset+"_unzipped"), os.path.join(directory,dataset))
