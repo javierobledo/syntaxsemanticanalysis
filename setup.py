@@ -11,6 +11,8 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'Click>=6.0',
+    'beautifulsoup4==4.5.3',
+    'lxml'
     # TODO: put package requirements here
 ]
 
@@ -33,7 +35,7 @@ setup(
                  'syntaxsemanticanalysis'},
     entry_points={
         'console_scripts': [
-            'syntaxsemanticanalysis=syntaxsemanticanalysis.cli:main'
+            'ssev=syntaxsemanticanalysis.cli:main'
         ]
     },
     include_package_data=True,
@@ -47,7 +49,6 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',

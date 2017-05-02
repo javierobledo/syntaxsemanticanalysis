@@ -104,3 +104,12 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+# Virtual Enviroment
+venv
+
+# Temporary Dataset directory
+*/tmp/*
+
+# Ignore Mac DS_Store files
+.DS_Store
