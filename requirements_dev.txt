@@ -8,6 +8,6 @@ coverage==4.3.4
 Sphinx==1.5.5
 PyYAML==3.12
 pytest==3.0.7
-beautifulsoup4==4.5.3
+beautifulsoup4==4.7.0
 lxml==3.7.3
 pytest==3.0.7
