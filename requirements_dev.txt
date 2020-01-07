@@ -6,7 +6,7 @@ flake8==3.2.1
 tox==2.7.0
 coverage==4.3.4
 Sphinx==1.5.5
-PyYAML==3.12
+PyYAML==5.3
 pytest==3.0.7
 beautifulsoup4==4.5.3
 lxml==3.7.3
